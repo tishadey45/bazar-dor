@@ -1,0 +1,48 @@
+import Image from "next/image";
+
+export default function Navbar() {
+  const date = new Date().toLocaleDateString("bn-BD", {
+    dateStyle: "full",
+  });
+
+  return (
+<nav className="max-w-8xl gap-85 mx-auto py-10 px-20 grid grid-cols-3 ">
+
+  {/* Left */}
+  <div className="flex items-center gap-2">
+    <Image
+      src="/logo-icon.png"
+      className="rounded-2xl bg-green-700 p-2"
+      height={40}
+      width={40}
+      alt="logo"
+    />
+
+    <div>
+      <h1 className="text-xl font-bold text-red-700">
+        বাজার দর
+      </h1>
+
+      <p className="text-[10px] text-gray-600">
+        {date}
+      </p>
+    </div>
+  </div>
+
+  {/* Center - Empty */}
+  <div></div>
+
+  {/* Right */}
+  <div className="flex  justify-end gap-3">
+    <button className="text-sm">
+      Sign In
+    </button>
+
+    <button className="bg-green-700 text-white px-4 py-2 rounded-md text-sm">
+      Sign Up
+    </button>
+  </div>
+
+</nav>
+  );
+}

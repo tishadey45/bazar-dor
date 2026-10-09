@@ -15,6 +15,13 @@ interface Headlines {
   };
 }
 
+const units: Record<string, string> = {
+  kg: "কেজি",
+  litre: "লিটার",
+  dozen: "ডজন",
+  piece: "পিস",
+};
+
 export default async function Marquee() {
   const res = await fetch(
     "https://api.api-store.workers.dev/api/bazardor/products"
@@ -42,7 +49,7 @@ export default async function Marquee() {
               <span>{h.categoryNameBn}</span>
 
               <span>
-                {h.price} টাকা/{h.unit}
+                {h.price} টাকা/{units[h.unit] ?? h.unit}
               </span>
 
               <span>

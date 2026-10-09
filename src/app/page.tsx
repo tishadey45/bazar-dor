@@ -47,8 +47,8 @@ export default async function HomePage() {
     .slice(0, 6);
 
   const sections = [
-    { title: "আজ দাম বেড়েছে ▲", items: risers },
-    { title: "আজ দাম কমেছে ▼", items: fallers },
+    { title: "▲ আজ দাম বেড়েছে", iconClass: "text-red-600", items: risers },
+    { title: "▼ আজ দাম কমেছে", iconClass: "text-green-600", items: fallers },
     { title: "সব পণ্য", items: products },
   ];
 
@@ -62,7 +62,14 @@ export default async function HomePage() {
         {sections.map((section, index) => (
           <section key={section.title}>
             <h2 className="mb-2 text-2xl font-bold text-gray-900">
-              {section.title}
+              {section.iconClass ? (
+                <>
+                  <span className={section.iconClass}>{section.title.charAt(0)}</span>
+                  {section.title.slice(1)}
+                </>
+              ) : (
+                section.title
+              )}
             </h2>
 
             {index === 2 && (

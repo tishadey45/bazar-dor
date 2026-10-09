@@ -17,7 +17,7 @@ interface Headlines {
 
 export default async function Marquee() {
   const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/products?category=chal"
+    "https://api.api-store.workers.dev/api/bazardor/products"
   );
 
   if (!res.ok) {

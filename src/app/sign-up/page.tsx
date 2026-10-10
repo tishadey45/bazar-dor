@@ -56,7 +56,7 @@ export default function SignUpPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full bg-white rounded-3xl border border-gray-200 p-8 shadow-sm">
+      <div className="max-w-120 w-full bg-white rounded-3xl border border-gray-200 p-8 shadow-sm">
         <form onSubmit={onSubmit} className="space-y-5">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1.5">
@@ -66,7 +66,7 @@ export default function SignUpPage() {
               name="name"
               type="text"
               required
-              placeholder="যেমন: প্রবীর উদ্দিন"
+              placeholder="যেমন: ঝংকার মাহবুব"
               className="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent text-gray-900 placeholder-gray-400"
             />
           </div>

@@ -63,7 +63,7 @@ export default function SignInPage() {
         </p>
       </div>
 
-      <div className="max-w-md w-full bg-white rounded-3xl border border-gray-200/80 p-8 shadow-sm">
+      <div className="max-w-120 w-full bg-white rounded-3xl border border-gray-200/80 p-8 shadow-sm">
         <form onSubmit={onSubmit} className="space-y-5">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1.5">

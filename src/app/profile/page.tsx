@@ -3,24 +3,16 @@
 import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function ProfilePage() {
   const router = useRouter();
   const { data: session, isPending, refetch } = authClient.useSession();
   const user = session?.user;
 
-  const [name, setName] = useState("");
+  const [name, setName] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  
-  useEffect(() => {
-    if (user?.name) {
-      setName(user.name);
-    }
-  }, [user]);
-
-  
   const handleSignOut = async () => {
     await authClient.signOut({
       fetchOptions: {
@@ -36,7 +28,7 @@ export default function ProfilePage() {
     setLoading(true);
     try {
       await authClient.updateUser({
-        name: name,
+        name: name ?? user?.name ?? "",
       });
       refetch();
       alert("সফলভাবে আপডেট করা হয়েছে!");
@@ -54,7 +46,6 @@ export default function ProfilePage() {
 
   return (
     <div className="px-100 py-12">
-    
       <div className="mb-8">
         <h1 className="text-3xl font-extrabold text-gray-900 mb-1">
           আমার প্রোফাইল
@@ -64,7 +55,6 @@ export default function ProfilePage() {
         </p>
       </div>
 
-     
       <div className="bg-white rounded-3xl border border-gray-200 p-6 shadow-sm mb-6 flex  justify-between">
         <div className="flex  gap-4">
           <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-gray-100 shrink-0 border border-gray-200">
@@ -109,7 +99,7 @@ export default function ProfilePage() {
             </label>
             <input
               type="text"
-              value={name}
+              value={name ?? user?.name ?? ""}
               onChange={(e) => setName(e.target.value)}
               placeholder="আপনার নাম লিখুন"
               className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-sm focus:outline-none focus:ring-2 focus:ring-green-600 focus:bg-white transition text-gray-900"

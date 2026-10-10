@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import NavLink from "./NavLink";
+import UserInfo from "./UserInfo";
 
 export default function Navbar() {
   const date = new Date().toLocaleDateString("bn-BD", {
@@ -35,16 +36,7 @@ export default function Navbar() {
           <div></div>
 
           {/* Right */}
-          <div className="flex justify-end gap-3">
-            <Link href="/sign-in">
-              <button className="text-sm">Sign In</button>
-            </Link>
-            <Link href="/sign-up">
-            <button className="bg-green-700 text-white px-4 py-2 rounded-md text-sm">
-              Sign Up
-            </button>
-            </Link>
-          </div>
+         <UserInfo/>
         </div>
 
         {/* NavLink - Navbar er niche */}

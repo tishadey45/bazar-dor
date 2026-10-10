@@ -31,7 +31,7 @@ export default async function ProductDetailsPage({
 }) {
   const { id } = await params;
   const res = await fetch(
-    `https://api.abcz.workers.dev/api/bazardor/products/${id}`,
+    `https://openapi.programming-hero.com/api/bazardor/products/${id}`,
   );
 
   if (!res.ok) {
@@ -115,9 +115,10 @@ export default async function ProductDetailsPage({
           {" "}
           হোম
         </Link>
-        <Link href="/categories" className="mb-6 inline-flex text-sm font-medium text-emerald-700 hover:underline">
-          
-        </Link>
+        <Link
+          href="/categories"
+          className="mb-6 inline-flex text-sm font-medium text-emerald-700 hover:underline"
+        ></Link>
         <div className="px-2 pt-10">
           <section className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm px-6">
             <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">

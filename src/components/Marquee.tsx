@@ -24,7 +24,7 @@ const units: Record<string, string> = {
 
 export default async function Marquee() {
   const res = await fetch(
-    "https://api.abcz.workers.dev/api/bazardor/products"
+    "https://openapi.programming-hero.com/api/bazardor/products"
   );
 
   if (!res.ok) {

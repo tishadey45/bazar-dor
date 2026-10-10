@@ -22,8 +22,8 @@ interface IProduct {
 
 async function getProducts(): Promise<IProduct[]> {
   const res = await fetch(
-    "https://api.abcz.workers.dev/api/bazardor/products",
-    { cache: "no-store" }
+    "https://openapi.programming-hero.com/api/bazardor/products",
+    { cache: "no-store" },
   );
 
   if (!res.ok) {
@@ -64,7 +64,9 @@ export default async function HomePage() {
             <h2 className="mb-2 text-2xl font-bold text-gray-900">
               {section.iconClass ? (
                 <>
-                  <span className={section.iconClass}>{section.title.charAt(0)}</span>
+                  <span className={section.iconClass}>
+                    {section.title.charAt(0)}
+                  </span>
                   {section.title.slice(1)}
                 </>
               ) : (

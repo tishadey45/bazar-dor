@@ -10,8 +10,6 @@ const units: Record<string, string> = {
   piece: "পিস",
 };
 
-
-
 interface Product {
   id: string;
   categoryNameBn: string;
@@ -34,13 +32,12 @@ export default async function CategoriesPage({
   const { categoryId } = await params;
 
   const res = await fetch(
-    `https://api.abcz.workers.dev/api/bazardor/products?category=${categoryId}`
+    `https://openapi.programming-hero.com/api/bazardor/products?category=${categoryId}`,
   );
   const products: Product[] = await res.json();
 
   return (
     <div className=" py-8 px-28">
-     
       <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm mb-6 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gray-50 text-3xl">
@@ -72,8 +69,8 @@ export default async function CategoriesPage({
             dir === "up"
               ? "text-red-600 bg-red-50"
               : dir === "down"
-              ? "text-green-600 bg-green-50"
-              : "text-gray-500 bg-gray-50";
+                ? "text-green-600 bg-green-50"
+                : "text-gray-500 bg-gray-50";
           const arrow = dir === "up" ? "▲" : dir === "down" ? "▼" : "—";
 
           return (

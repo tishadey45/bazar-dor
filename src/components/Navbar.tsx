@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import NavLink from "./NavLink";
 
 export default function Navbar() {
@@ -12,21 +13,23 @@ export default function Navbar() {
         {/* Top Navbar with Grid Layout */}
         <div className="grid gap-x-80 grid-cols-3 items-center">
           {/* Left */}
-          <div className="flex items-center gap-2">
-            <Image
-              src="/logo-icon.png"
-              className="rounded-2xl bg-green-700 p-2"
-              height={40}
-              width={40}
-              alt="logo"
-            />
+          <Link href="/" className="flex items-center gap-2">
+            <div className="flex items-center gap-2">
+              <Image
+                src="/logo-icon.png"
+                className="rounded-2xl bg-green-700 p-2"
+                height={40}
+                width={40}
+                alt="logo"
+              />
 
-            <div>
-              <h1 className="text-xl font-bold text-red-700">বাজার দর</h1>
+              <div>
+                <h1 className="text-xl font-bold text-red-700">বাজার দর</h1>
 
-              <p className="text-[10px] text-gray-600">{date}</p>
+                <p className="text-[10px] text-gray-600">{date}</p>
+              </div>
             </div>
-          </div>
+          </Link>
 
           {/* Center - Empty */}
           <div></div>

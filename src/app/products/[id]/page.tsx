@@ -31,7 +31,7 @@ export default async function ProductDetailsPage({
 }) {
   const { id } = await params;
   const res = await fetch(
-    `https://api.api-store.workers.dev/api/bazardor/products/${id}`,
+    `https://api.abcz.workers.dev/api/bazardor/products/${id}`,
   );
 
   if (!res.ok) {
@@ -58,7 +58,7 @@ export default async function ProductDetailsPage({
     return new Intl.NumberFormat("bn-BD").format(num);
   };
 
-  const unit: Record<string, string> = {
+  const units: Record<string, string> = {
     kg: "কেজি",
     litre: "লিটার",
     dozen: "ডজন",
@@ -109,10 +109,15 @@ export default async function ProductDetailsPage({
     <div className="min-h-screen bg-slate-50 p-4 md:p-8">
       <div className="mx-auto max-w-5xl space-y-6">
         <Link
-       href="/"
-       className="mb-6 inline-flex text-sm font-medium text-emerald-700 hover:underline"
-     > হোম 
-</Link>
+          href="/"
+          className="mb-6 inline-flex text-sm font-medium text-emerald-700 hover:underline"
+        >
+          {" "}
+          হোম
+        </Link>
+        <Link href="/categories" className="mb-6 inline-flex text-sm font-medium text-emerald-700 hover:underline">
+          
+        </Link>
         <div className="px-2 pt-10">
           <section className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm px-6">
             <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
@@ -125,8 +130,7 @@ export default async function ProductDetailsPage({
                     {data.nameBn}
                   </h1>
                   <p className="mt-1 text-sm text-slate-500">
-                    প্রতি {unit[data.unit] ?? data.unit} ·{" "}
-                    {data.categoryNameBn || data.category}
+                    প্রতি {units[data.unit] ?? data.unit}
                   </p>
                   <p className="mt-2 text-xs text-slate-600">
                     {data.description ||
@@ -144,7 +148,7 @@ export default async function ProductDetailsPage({
                 </div>
                 <div className="text-right md:text-center">
                   <span className="text-xs text-slate-500 block">
-                    টাকা/{unit[data.unit] ?? data.unit}
+                    টাকা/{units[data.unit] ?? data.unit}
                   </span>
                 </div>
               </div>

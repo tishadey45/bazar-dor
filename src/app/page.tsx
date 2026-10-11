@@ -60,7 +60,11 @@ export default async function HomePage() {
 
       <main className="mx-auto max-w-7xl space-y-12 px-4 py-8 sm:px-6 lg:px-8">
         {sections.map((section, index) => (
-          <section key={section.title}>
+          <section
+            key={section.title}
+            id={index === 2 ? "সব-পণ্য" : undefined}
+            className="scroll-mt-12"
+          >
             <h2 className="mb-2 text-2xl font-bold text-gray-900">
               {section.iconClass ? (
                 <>

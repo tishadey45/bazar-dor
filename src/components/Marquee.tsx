@@ -1,4 +1,4 @@
-
+import Link from "next/link";
 import MarqueeText from "react-marquee-text";
 import "react-marquee-text/dist/styles.css";
 
@@ -24,7 +24,7 @@ const units: Record<string, string> = {
 
 export default async function Marquee() {
   const res = await fetch(
-    "https://openapi.programming-hero.com/api/bazardor/products"
+    "https://openapi.programming-hero.com/api/bazardor/products",
   );
 
   if (!res.ok) {
@@ -38,30 +38,31 @@ export default async function Marquee() {
       <div className="mx-auto flex max-w-7xl">
         <MarqueeText className="py-1" direction="right" duration={10}>
           {headlines.map((h) => (
-            <div
-              key={h.id}
-              className="mx-5 flex items-center gap-2 whitespace-nowrap"
-            >
-              <span>{h.categoryIcon ?? h.emoji}</span>
+            <Link key={h.id} href={`/products/${h.id}`}>
+              <div
+                key={h.id}
+                className="mx-5 flex items-center gap-2 whitespace-nowrap"
+              >
+                <span>{h.categoryIcon ?? h.emoji}</span>
 
-              <span>{h.nameBn}</span>
+                <span>{h.nameBn}</span>
 
-              <span>{h.categoryNameBn}</span>
+                <span>{h.categoryNameBn}</span>
 
-              <span>
-                {h.price} টাকা/{units[h.unit] ?? h.unit}
-              </span>
+                <span>
+                  {h.price} টাকা/{units[h.unit] ?? h.unit}
+                </span>
 
-              <span>
-                {h.change.pct >= 0 ? (
-                  <span className="px-1 text-red-600">▲</span>
-                ) : (
-                  <span className="px-1 text-green-600">▼</span>
-                )}
-
-                {Math.abs(h.change.pct)}%
-              </span>
-            </div>
+                <span>
+                  {h.change.pct >= 0 ? (
+                    <span className="px-1 text-red-600">▲</span>
+                  ) : (
+                    <span className="px-1 text-green-600">▼</span>
+                  )}
+                  {Math.abs(h.change.pct)}%
+                </span>
+              </div>
+            </Link>
           ))}
         </MarqueeText>
       </div>

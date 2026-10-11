@@ -3,7 +3,7 @@
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
+import toast from 'react-hot-toast';
 export default function SignInPage() {
   const router = useRouter();
 
@@ -53,6 +53,8 @@ export default function SignInPage() {
       callbackURL: "/",
     });
   };
+const notify = () => toast('সাইন ইন করা হয়েছে।');
+  
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50/50 py-12 px-4 sm:px-6 lg:px-8">
@@ -92,6 +94,7 @@ export default function SignInPage() {
           </div>
 
           <button
+          onClick={notify}
             type="submit"
             className="w-full py-3 px-4 rounded-xl text-white font-medium bg-green-700 hover:bg-green-800 transition duration-200 shadow-sm cursor-pointer"
           >

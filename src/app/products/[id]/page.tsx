@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FaGreaterThan } from "react-icons/fa6";
 interface IMarketPrice {
   market: string;
   division: string;
@@ -24,6 +25,20 @@ interface IProduct {
   markets?: IMarketPrice[];
 }
 
+// interface ProductCategory {
+//   id: string;
+//   categoryNameBn: string;
+//   nameBn: string;
+//   unit: string;
+//   image?: string;
+//   categoryIcon?: string;
+//   today: number;
+//   change: {
+//     dir: "up" | "down" | "same";
+//     pct: number;
+//   };
+// }
+
 export default async function ProductDetailsPage({
   params,
 }: {
@@ -39,6 +54,11 @@ export default async function ProductDetailsPage({
   }
 
   const data: IProduct = await res.json();
+
+  //   const result = await fetch(
+  //   `https://openapi.programming-hero.com/api/bazardor/products?category=${categoryId}`,
+  // );
+  // let productCategories: ProductCategory[] = await result.json();
 
   const parseNum = (val: string | number | undefined | null): number => {
     if (typeof val === "number") return val;
@@ -113,12 +133,24 @@ export default async function ProductDetailsPage({
           className="mb-6 inline-flex text-sm font-medium text-emerald-700 hover:underline"
         >
           {" "}
-          হোম
+          হোম <span className="">
+         <FaGreaterThan />
+          </span>
         </Link>
+        
         <Link
           href="/categories"
           className="mb-6 inline-flex text-sm font-medium text-emerald-700 hover:underline"
-        ></Link>
+        >
+          {data.categoryNameBn} 
+          <span className="">
+         <FaGreaterThan />
+          </span>
+        </Link>
+        <Link  href="/products"
+          className="mb-6 inline-flex text-sm font-medium text-emerald-700 hover:underline">
+            {data.nameBn}
+        </Link>
         <div className="px-2 pt-10">
           <section className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm px-6">
             <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">

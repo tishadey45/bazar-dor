@@ -54,7 +54,7 @@ export default async function HomePage() {
 
   return (
     <div>
-      <div className="mx-auto max-w-4xl px-6 py-10">
+      <div className="mx-auto max-w-7xl px-2 py-10">
         <Banner />
       </div>
 
